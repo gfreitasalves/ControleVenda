@@ -1,0 +1,53 @@
+@ControleVenda.Api_HostAddress = https://localhost:7023
+
+//Registrar uma venda
+POST {{ControleVenda.Api_HostAddress}}/Venda/
+Content-Type: application/json
+
+{
+  "vendedor": {
+    "cpf": "1111111111"
+  },
+  "itens": [
+    {
+      "Id":"d27b7e1d-5356-4a16-8a59-b9b090339698"
+    }
+  ]
+}
+###
+
+//Registrar uma venda sem itens
+POST {{ControleVenda.Api_HostAddress}}/Venda/
+Content-Type: application/json
+
+{
+  "vendedor": {
+    "cpf": "1111111111"
+  },
+  "itens": []
+}
+###
+
+
+//Obter uma venda
+
+GET {{ControleVenda.Api_HostAddress}}/Venda/bca4c4ab-726a-447c-bf64-73fcce23dd9e
+Accept: application/json
+
+###
+
+
+//Atualizar status de uma venda
+//AguardandoPagamento
+//PagamentoAprovado
+//EnviadoParaTransportadora
+//Entregue
+//Cancelada
+PUT {{ControleVenda.Api_HostAddress}}/Venda/Status
+Content-Type: application/json
+
+{
+  "idVenda": "bca4c4ab-726a-447c-bf64-73fcce23dd9e",
+  "status": "PagamentoAprovado"
+}
+###
